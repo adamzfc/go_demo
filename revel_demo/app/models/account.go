@@ -5,7 +5,7 @@ import (
 )
 
 type Account struct {
-    Id int64 `xorm:"pk"`
+    Id int64 `xorm:"pk autoincr"`
     Name string `xorm:"char(32)"`
 }
 
@@ -15,9 +15,9 @@ func (a Account) SelectAll() (account_arr []Account) {
     return account_list
 }
 
-func (a *Account) InsertOne() bool {
+func (a Account) InsertOne(name string) bool {
     account := new(Account)
-    account.Name = a.Name
+    account.Name = name
     has, err := engine.Table("account").Insert(account)
     if err != nil {
         revel.WARN.Println(has)
@@ -27,3 +27,13 @@ func (a *Account) InsertOne() bool {
     return true
 }
 
+func (a Account) SelectById(id string) Account {
+    ac := new(Account)
+    has, err := engine.Where("id=?", id).Get(ac)
+    if err != nil || !has{
+        (*ac).Id = -1
+        return *ac
+    } else {
+        return *ac
+    }
+}

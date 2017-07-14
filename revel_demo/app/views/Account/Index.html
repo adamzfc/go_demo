@@ -1,4 +1,4 @@
-<html>
+{{template "header.html" .}}
     {{if .account_list}}
     {{range .account_list}}
     <tr>
@@ -7,4 +7,16 @@
     </tr>
     {{end}}
     {{end}}
-</html>
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      {{template "flash.html" .}}
+    </div>
+  </div>
+</div>
+<form action="/Account/Add" method="POST">
+    {{with $field := field "accountName" .}}
+    <input type="text" name="{{$field.Name}}" value="{{$field.Flash}}" /><br/>
+    {{end}}
+    <input type="submit" value="Say hello!" />
+</form>
