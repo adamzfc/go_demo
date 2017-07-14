@@ -1,0 +1,10 @@
+<html>
+    {{if .account_list}}
+    {{range .account_list}}
+    <tr>
+        <td align="left">{{.Id}}</td>
+        <td align="left">{{.Name}}</td>
+    </tr>
+    {{end}}
+    {{end}}
+</html>
