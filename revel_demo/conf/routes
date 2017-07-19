@@ -18,5 +18,8 @@ GET     /public/*filepath                       Static.Serve("public")
 GET     /Account                                Account.Index
 GET     /Api/Account                            Account.ApiList
 
+GET     /ACRA                                   ACRA.Index
+POST    /ACRA                                   ACRA.AddReport
+
 # Catch all
 *       /:controller/:action                    :controller.:action
