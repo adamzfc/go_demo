@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/revel/revel"
-    "github.com/adamzfc/revel_demo/app/models"
+    "github.com/adamzfc/go_demo/revel_demo/app/models"
 )
 
 type Acra struct {
